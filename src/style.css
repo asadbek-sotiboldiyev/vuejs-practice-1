@@ -1,0 +1,10 @@
+body {
+    padding-top: 50px;
+}
+
+.block-panel {
+    border: 2px solid wheat;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff2d05c;
+}
