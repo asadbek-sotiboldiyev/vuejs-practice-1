@@ -12,7 +12,7 @@
       </div>
 
       <MovieList :movies="movies"/>
-      <MovieAdd />
+      <MovieAdd @createMovie="createMovie"/>
     </div>
   </div>
 </template>
@@ -36,6 +36,12 @@ export default {
         { name: 'Kelajakka qaytib', views: 900, favourite: false, like: true },
         { name: 'Avatar', views: 1000, favourite: false, like: false },
       ],
+    }
+  },
+  methods:{
+    createMovie(newMovie) {
+      console.log(newMovie);
+      this.movies.push(newMovie);
     }
   }
 };
