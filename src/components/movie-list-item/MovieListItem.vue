@@ -1,6 +1,8 @@
 <template>
     <div class="list-group-item d-flex justify-content-between"
-        :class="[{ like: movie.like }, { favourite: movie.favourite }]">
+        :class="[{ like: movie.like }, { favourite: movie.favourite }]"
+        @click="onLike"
+    >
         <span class="list-group-item-label">
             {{ movie.name }}
         </span>
@@ -9,7 +11,7 @@
 
         <div class="d-flex justify-content-center align-items-center">
             <button class="btn btn-sm btn-cookie">
-                <i class="fas fa-cookie"></i>
+                <i class="fas fa-heart"></i>
             </button>
 
             <button class="btn btn-sm btn-trash">
@@ -30,6 +32,11 @@ export default {
             type: Object,
             required: true,
         }
+    },
+    methods: {
+        onLike() {
+            this.$emit('onLike', this.movie.id);
+        },
     }
 }
 </script>
@@ -40,6 +47,7 @@ export default {
     font-size: 20px;
     padding: 10px;
     border-bottom: 2px solid grey;
+    cursor: pointer;
 }
 
 .list-group-item:last-child {

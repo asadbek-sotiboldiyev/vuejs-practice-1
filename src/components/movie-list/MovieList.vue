@@ -5,7 +5,9 @@
             <MovieListItem 
                 v-for="movie in movies" 
                 :key="movie.id"
-                v-bind:movie="movie"/>
+                v-bind:movie="movie"
+                @onLike="onLike"
+            />
         </div>
     </div>
 </template>
@@ -22,6 +24,11 @@ export default {
             type: Array,
             required: true
         },
+    },
+    methods: {
+        onLike(id) {
+            this.$emit('onLike', id);
+        }
     }
 };
 </script>
