@@ -1,6 +1,10 @@
 <template>
-    <div class="list-group-item d-flex justify-content-between">
-        <span class="list-group-item-label">{{ movie.name }}</span>
+    <div class="list-group-item d-flex justify-content-between"
+        :class="[{ like: movie.like }, { favourite: movie.favourite }]">
+        <span class="list-group-item-label">
+            {{ movie.name }}
+        </span>
+
         <input type="number" class="list-group-input" v-bind:value="movie.views">
 
         <div class="d-flex justify-content-center align-items-center">

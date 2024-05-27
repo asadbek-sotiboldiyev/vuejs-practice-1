@@ -3,8 +3,9 @@
         <h1>Kinolar:</h1>
         <div class="movie-list">
             <MovieListItem 
-                v-for = "movie in movies" 
-                v-bind:movie = "movie"/>
+                v-for="movie in movies" 
+                :key="movie.id"
+                v-bind:movie="movie"/>
         </div>
     </div>
 </template>
@@ -16,14 +17,11 @@ export default {
     components: {
         MovieListItem
     },
-    data() {
-        return {
-            movies: [
-                { name: 'Terminator', views: 811 },
-                { name: 'Kelajakka qaytib', views: 900 },
-                { name: 'Qasoskorlar', views: 789 },
-            ]
-        }
+    props:{
+        movies:{
+            type: Array,
+            required: true
+        },
     }
 };
 </script>

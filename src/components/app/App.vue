@@ -1,14 +1,17 @@
 <template>
   <div class="app container font-monospace">
     <div class="content">
-      <AppInfo />
+      <AppInfo 
+        :allMoviesCount="movies.length"
+        :favouriteMoviesCount="movies.filter(c => c.favourite).length"
+      />
 
       <div class="search-panel block-panel">
         <SearchPanel />
         <AppFilter />
       </div>
 
-      <MovieList />
+      <MovieList :movies="movies"/>
       <MovieAdd />
     </div>
   </div>
@@ -25,6 +28,16 @@ export default {
   components: {
     AppInfo, SearchPanel, AppFilter, MovieList, MovieAdd
   },
+  data() {
+    return {
+      movies: [
+        { name: 'Terminator', views: 899, favourite: true, like: false },
+        { name: 'Qasoskorlar', views: 901, favourite: false, like: false },
+        { name: 'Kelajakka qaytib', views: 900, favourite: false, like: true },
+        { name: 'Avatar', views: 1000, favourite: false, like: false },
+      ],
+    }
+  }
 };
 </script>
 
