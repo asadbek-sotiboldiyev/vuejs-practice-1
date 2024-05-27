@@ -6,7 +6,7 @@
                 v-for="movie in movies" 
                 :key="movie.id"
                 v-bind:movie="movie"
-                @onLike="onLike"
+                @onToggle="$emit('onToggle', $event)"
             />
         </div>
     </div>
@@ -25,11 +25,7 @@ export default {
             required: true
         },
     },
-    methods: {
-        onLike(id) {
-            this.$emit('onLike', id);
-        }
-    }
+    methods: {}
 };
 </script>
 

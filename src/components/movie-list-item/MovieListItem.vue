@@ -1,8 +1,6 @@
 <template>
     <div class="list-group-item d-flex justify-content-between"
-        :class="[{ like: movie.like }, { favourite: movie.favourite }]"
-        @click="onLike"
-    >
+        :class="[{ like: movie.like }, { favourite: movie.favourite }]" >
         <span class="list-group-item-label">
             {{ movie.name }}
         </span>
@@ -10,7 +8,7 @@
         <input type="number" class="list-group-input" v-bind:value="movie.views">
 
         <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-sm btn-cookie">
+            <button class="btn btn-sm btn-cookie" @click="$emit('onToggle', {id: movie.id, prop: 'favourite'})">
                 <i class="fas fa-heart"></i>
             </button>
 
@@ -18,7 +16,7 @@
                 <i class="fas fa-trash"></i>
             </button>
 
-            <button class="btn btn-sm btn-star">
+            <button class="btn btn-sm btn-star" @click="$emit('onToggle', {id: movie.id, prop: 'like'})">
                 <i class="fas fa-star"></i>
             </button>
         </div>
@@ -37,6 +35,9 @@ export default {
         onLike() {
             this.$emit('onLike', this.movie.id);
         },
+        onFavourite(){
+            this.$emit('onFavourite', this.movie.id);
+        }
     }
 }
 </script>
@@ -91,5 +92,10 @@ export default {
 .list-group-item.favourite .list-group-item-label,
 .list-group-item.favourite .list-group-input {
     color: #ff8800;
+}
+
+.list-group-item.favourite .btn-cookie{
+    background-color: #ff8800;
+    color: white;
 }
 </style>

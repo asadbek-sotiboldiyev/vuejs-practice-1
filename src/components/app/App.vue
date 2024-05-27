@@ -8,7 +8,10 @@
 				<AppFilter />
 			</div>
 
-			<MovieList :movies="movies" @onLike="onLikeHandler" />
+			<MovieList 
+				:movies="movies" 
+				@onToggle="onToggleHandler" 
+			/>
 			<MovieAdd @createMovie="createMovie" />
 		</div>
 	</div>
@@ -41,15 +44,18 @@ export default {
 			console.log(newMovie);
 			this.movies.push(newMovie);
 		},
-		onLikeHandler(id) {
-			this.movies = this.movies.map(item => {
-				if (item.id == id) {
-					item.like = !item.like;
+		onToggleHandler({id, prop}) {
+			this.movies = this.movies.map(movie => {
+				if(movie.id == id){
+					// if(object.prop === 'like')
+					// 	movie.like = !movie.like;
+					// else
+					// 	movie.favourite = !movie.favourite;
+					return {...movie, [prop]: !movie[prop]};
 				}
-				return item;
+				return movie;
 			});
 		},
-
 	}
 };
 </script>
