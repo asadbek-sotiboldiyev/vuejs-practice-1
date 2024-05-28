@@ -11,8 +11,13 @@
 			<MovieList 
 				:movies="movies" 
 				@onToggle="onToggleHandler" 
+				@onDelete="onDeleteHandler"
 			/>
-			<MovieAdd @createMovie="createMovie" />
+			<MovieAdd 
+				@createMovie="createMovie"
+				@sequenceIdUpdate="sequenceIdUpdateHandler" 
+				:sequence_id="sequence_id"
+			/>
 		</div>
 	</div>
 </template>
@@ -47,14 +52,16 @@ export default {
 		onToggleHandler({id, prop}) {
 			this.movies = this.movies.map(movie => {
 				if(movie.id == id){
-					// if(object.prop === 'like')
-					// 	movie.like = !movie.like;
-					// else
-					// 	movie.favourite = !movie.favourite;
 					return {...movie, [prop]: !movie[prop]};
 				}
 				return movie;
 			});
+		},
+		onDeleteHandler(id) {
+			this.movies = this.movies.filter(item => item.id != id);
+		},
+		sequenceIdUpdateHandler() {
+			this.sequence_id += 1
 		},
 	}
 };

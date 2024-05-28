@@ -13,6 +13,12 @@
 
 <script>
 export default {
+	props: {
+		sequence_id: {
+			type: Number,
+			required: true
+		}
+	},
 	data() {
 		return {
 			name: "",
@@ -22,13 +28,17 @@ export default {
 
 	methods: {
 		addMovie() {
+			if(!this.name || !this.views)
+				return;
 			const newMovie = {
+				id: this.sequence_id + 1,
 				name: this.name,
 				views: this.views,
 				favourite: false,
 				like: false
 			};
 			this.$emit('createMovie', newMovie);
+			this.$emit('sequenceIdUpdate')
 			this.name = "";
 			this.views = "";
 		}

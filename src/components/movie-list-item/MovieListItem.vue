@@ -12,7 +12,7 @@
                 <i class="fas fa-heart"></i>
             </button>
 
-            <button class="btn btn-sm btn-trash">
+            <button class="btn btn-sm btn-trash" @click="$emit('onDelete', movie.id)">
                 <i class="fas fa-trash"></i>
             </button>
 
@@ -31,14 +31,7 @@ export default {
             required: true,
         }
     },
-    methods: {
-        onLike() {
-            this.$emit('onLike', this.movie.id);
-        },
-        onFavourite(){
-            this.$emit('onFavourite', this.movie.id);
-        }
-    }
+    methods: {}
 }
 </script>
 

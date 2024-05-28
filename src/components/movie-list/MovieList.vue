@@ -7,6 +7,7 @@
                 :key="movie.id"
                 v-bind:movie="movie"
                 @onToggle="$emit('onToggle', $event)"
+                @onDelete="$emit('onDelete', $event)"
             />
         </div>
     </div>
