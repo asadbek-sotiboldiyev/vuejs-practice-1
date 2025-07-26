@@ -26,7 +26,7 @@ export default {
             this.term = e.target.value;
             this.updateTermHandler(this.term);
         }
-    }
+    },
 };
 </script>
 

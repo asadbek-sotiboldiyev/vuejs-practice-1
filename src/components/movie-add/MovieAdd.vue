@@ -5,13 +5,14 @@
 			<input type="text" class="form-control" placeholder="Kino nomi" :value="name" @input="name = $event.target.value">
 			<input type="text" class="form-control" placeholder="Ko'rilgan" :value="views"
 				@input="views = $event.target.value">
-			<button class="btn btn-outline-dark" @click="addMovie">Qo'shish
-			</button>
+			<PrimaryButton class="btn btn-outline-dark" @click="addMovie">Qo'shish
+			</PrimaryButton>
 		</form>
 	</div>
 </template>
 
 <script>
+
 export default {
 	props: {
 		sequence_id: {

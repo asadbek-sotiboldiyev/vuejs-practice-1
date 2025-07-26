@@ -1,20 +1,9 @@
 <template>
     <div class="btn-group">
-        <button 
-            class="btn" 
-            @click="filterHandler('all')"
-            :class="[(filter == 'all' ? 'btn-dark' : 'btn-outline-dark')]"
-        >Barcha kinolar</button>
-        <button 
-            class="btn" 
-            @click="filterHandler('popular')"
-            :class="[(filter == 'popular' ? 'btn-dark' : 'btn-outline-dark')]"
-        >Sevimli</button>
-        <button 
-            class="btn"
-            @click="filterHandler('mostViews')"
-            :class="[(filter == 'mostViews' ? 'btn-dark' : 'btn-outline-dark')]"
-        >Ko'p ko'rilgan</button>
+        <PrimaryButton v-for="btn in filterButtons" :key="btn.name"
+            :class="[(filter == btn.name ? 'btn-dark' : 'btn-outline-dark')]"
+            @click="filterHandler(btn.name)"
+        >{{ btn.title }}</PrimaryButton>
     </div>
 </template>
 
@@ -28,6 +17,11 @@ export default {
     },
     data(){
         return {
+            filterButtons: [
+                {title: "Barcha kinolar", name: 'all'},
+                {title: "Sevimli", name: 'popular'},
+                {title: "Ko'p ko'rilgan", name: 'mostViews'},
+            ],
             filter: "all",
         }
     },
