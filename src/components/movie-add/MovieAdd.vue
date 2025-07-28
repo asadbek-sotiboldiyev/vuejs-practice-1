@@ -2,11 +2,10 @@
 	<div class="block-panel">
 		<h2>Yangi kino qo'shish</h2>
 		<form class="add-form d-flex" @submit.prevent>
-			<input type="text" class="form-control" placeholder="Kino nomi" :value="name" @input="name = $event.target.value">
-			<input type="text" class="form-control" placeholder="Ko'rilgan" :value="views"
-				@input="views = $event.target.value">
-			<PrimaryButton class="btn btn-outline-dark" @click="addMovie">Qo'shish
-			</PrimaryButton>
+            <InputUi placeholder="Kino nomi" v-model="name"/>
+            <InputUi placeholder="Ko'rilgan" type="number" v-model="views"/>
+
+			<PrimaryButton class="btn btn-outline-dark" @click="addMovie">Qo'shish</PrimaryButton>
 		</form>
 	</div>
 </template>
@@ -29,7 +28,7 @@ export default {
 
 	methods: {
 		addMovie() {
-			if(!this.name || !this.views)
+			if (!this.name || !this.views)
 				return;
 			const newMovie = {
 				id: this.sequence_id + 1,
